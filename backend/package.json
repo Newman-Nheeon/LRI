@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
+    "nodemon": "^2.0.20"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "LRI",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Newman Haruna - Navigating with Noel Foundation",
+  "license": "ISC"
+}
