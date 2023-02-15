@@ -1,30 +1,43 @@
 // Modules / Packages
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const session = require('express-session');
-const dotenv = require('dotenv');
-const cors = require('cors');
-const {v4: uuid } = require('uuid');
+const path = require('path');
+// const jwt = require('jsonwebtoken');
+// const bodyParser = require("body-parser");
+// const mongoose = require("mongoose");
+// const session = require('express-session');
+// const dotenv = require('dotenv');
+// const cors = require('cors');
+// const {v4: uuid } = require('uuid');
 
 // Middlewares
 const app = express();
-app.use (cors());
-app.use(express.json())
-dotenv.config()
+app.use(express.urlencoded({extended: false})); // built in middleware for handling form data
+app.use(express.json()); // built in middleware to handle json
+app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware to handle static files such as css
+
+
+app.get('/', (req, res)=>{
+    res.send("Server Running");
+});
+
+app.get('/*', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'Views', '404.html'))
+});
+// app.use (cors());
+
+// dotenv.config()
 
 
 
 //Database Connection Setup
-const CONNECTION_URL = process.env.DB;
+// const CONNECTION_URL = process.env.DB;
 const PORT = process.env.PORT || 5000;
-mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
-    .catch((error) => console.log(error.message));
+// mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+//     .then(() => app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
+//     .catch((error) => console.log(error.message));
 
 
-
+app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
 
 
 
