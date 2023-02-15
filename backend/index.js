@@ -6,7 +6,7 @@ const path = require('path');
 // const mongoose = require("mongoose");
 // const session = require('express-session');
 // const dotenv = require('dotenv');
-// const cors = require('cors');
+const cors = require('cors');
 // const {v4: uuid } = require('uuid');
 
 // Middlewares
@@ -14,6 +14,7 @@ const app = express();
 app.use(express.urlencoded({extended: false})); // built in middleware for handling form data
 app.use(express.json()); // built in middleware to handle json
 app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware to handle static files such as css
+app.use (cors()); // Cross Origin Resource Sharing
 
 
 app.get('/', (req, res)=>{
@@ -23,7 +24,6 @@ app.get('/', (req, res)=>{
 app.get('/*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'Views', '404.html'))
 });
-// app.use (cors());
 
 // dotenv.config()
 
