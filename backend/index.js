@@ -7,6 +7,7 @@ const path = require('path');
 // const session = require('express-session');
 // const dotenv = require('dotenv');
 const cors = require('cors');
+const corsOptions = require('./Config/corsOptions');
 // const {v4: uuid } = require('uuid');
 
 // Middlewares
@@ -16,18 +17,6 @@ app.use(express.json()); // built in middleware to handle json
 app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware to handle static files such as css
 app.use (cors()); // Cross Origin Resource Sharing
 
-
-const whitelist = ['yourdomain.com','http://localhost:3000/','http://localhost:5000/']
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) != -1 || !origin) {
-            callback(null, true)
-        }else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    optionsSuccessStatus: 200
-}
 
 // Routes
 app.get('/', (req, res)=>{
@@ -39,9 +28,6 @@ app.use('*', (req, res) => {
 });
 
 app.use('/register', require('./Routes/Register'));
-// dotenv.config()
-
-
 
 //Database Connection Setup
 // const CONNECTION_URL = process.env.DB;
