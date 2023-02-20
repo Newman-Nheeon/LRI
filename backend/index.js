@@ -17,14 +17,28 @@ app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware
 app.use (cors()); // Cross Origin Resource Sharing
 
 
+const whitelist = ['yourdomain.com','http://localhost:3000/','http://localhost:5000/']
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) != -1 || !origin) {
+            callback(null, true)
+        }else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200
+}
+
+// Routes
 app.get('/', (req, res)=>{
     res.send("Server Running");
 });
 
-app.get('/*', (req, res) => {
+app.use('*', (req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'Views', '404.html'))
 });
 
+app.use('/register', require('./Routes/Register'));
 // dotenv.config()
 
 
