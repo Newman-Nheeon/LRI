@@ -1,11 +1,11 @@
 // Modules / Packages
 const express = require('express');
 const path = require('path');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 // const bodyParser = require("body-parser");
 // const mongoose = require("mongoose");
 // const session = require('express-session');
-// const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 const cors = require('cors');
 const corsOptions = require('./Config/corsOptions');
 // const {v4: uuid } = require('uuid');
@@ -28,6 +28,8 @@ app.use('*', (req, res) => {
 });
 
 app.use('/register', require('./Routes/Register'));
+app.use('/login', require('./Routes/login'));
+
 
 //Database Connection Setup
 // const CONNECTION_URL = process.env.DB;
