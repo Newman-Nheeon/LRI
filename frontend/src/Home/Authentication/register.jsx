@@ -227,7 +227,7 @@ const Register = () => {
                         aria-describedby="passwordError" 
                         style={{ flexGrow: 1 }}
                         required />
-                        {/* <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} onClick={togglePasswordVisibility} /> */}
+                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} onClick={togglePasswordVisibility} />
                     </div>
                     {passwordError && (<div id="passwordError" style={{ color: 'red' }}>
                           <FontAwesomeIcon icon={faExclamationCircle} /> {passwordError}</div>)}

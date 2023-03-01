@@ -8,6 +8,7 @@ const cors = require('cors');
 const corsOptions = require('./Config/corsOptions');
 // const {v4: uuid } = require('uuid');
 const verifyJWT = require('./Middlewares/verifyJWT');
+const credentials = require('./Middlewares/credentials');
 
 
 // Middlewares
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.urlencoded({extended: false})); // built in middleware for handling form data
 app.use(express.json()); // built in middleware to handle json
 app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware to handle static files such as css
+app.use(credentials); // handle options credentials check - before CORS and fetch cookies credentials requirements
 app.use(cors(corsOptions)); // Cross Origin Resource Sharing
 app.use(cookieParser()); // Middleware for cookies
 
@@ -29,6 +31,8 @@ app.use('*', (req, res) => {
 
 app.use('/register', require('./Routes/Register'));
 app.use('/login', require('./Routes/login'));
+app.use('/refresh', require('./Routes/refresh'));
+app.use('/logout', require('./Routes/logout'));
 app.use(verifyJWT);
 
 
