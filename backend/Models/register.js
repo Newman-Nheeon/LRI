@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const Schema = mongoose.Schema;
 
 // Define MongoDB schema
 const formDataSchema = new mongoose.Schema({

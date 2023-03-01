@@ -1,12 +1,13 @@
 // Modules / Packages
+const dotenv = require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require("cookie-parser");
-// const mongoose = require("mongoose");
-// const session = require('express-session');
+const mongoose = require("mongoose");
+const connectDB = require('./Config/dbCon');
+const PORT = process.env.PORT || 5000;
 const cors = require('cors');
 const corsOptions = require('./Config/corsOptions');
-// const {v4: uuid } = require('uuid');
 const verifyJWT = require('./Middlewares/verifyJWT');
 const credentials = require('./Middlewares/credentials');
 
@@ -19,6 +20,8 @@ app.use(express.static(path.join(__dirname, '/Public'))); // built in middleware
 app.use(credentials); // handle options credentials check - before CORS and fetch cookies credentials requirements
 app.use(cors(corsOptions)); // Cross Origin Resource Sharing
 app.use(cookieParser()); // Middleware for cookies
+
+
 
 // Routes
 app.get('/', (req, res)=>{
@@ -36,12 +39,11 @@ app.use('/logout', require('./Routes/logout'));
 app.use(verifyJWT);
 
 
-//Database Connection Setup
-// const CONNECTION_URL = process.env.DB;
-const PORT = process.env.PORT || 5000;
-// mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-//     .then(() => app.listen(PORT, () => console.log(`Server Running on Port: ${PORT}`)))
-//     .catch((error) => console.log(error.message));
+// Database Connection to MongoDB
+connectDB();
+mongoose.connection.once('open', () => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
+})
 
 
-app.listen(PORT, () => console.log(`Server Running on Port ${PORT}`));
