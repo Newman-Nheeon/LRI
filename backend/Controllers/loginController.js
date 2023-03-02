@@ -1,18 +1,14 @@
-const usersDB = {
-    users: require('../Models/users.json'),
-    setUsers: function (data) { this.users = data }
-};
+const User = require('../Models/users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const dotenv = require('dotenv').config();
-const fsPromises = require('fs').promises;
-const path = require('path');
+
 
 const handleLogin = async (req, res) => {
     const {firstName, lastName, password, email } = req.body;
     if (!firstName || !lastName || !email || !password) return res.status(400).json({'message': 'Fields are required!!'});
 
-    const findUser = usersDB.users.find(person => person.email === email);
+    const findUser =  await User.findOne({ email: email }).exec();
+    if (duplicate) return res.sendStatus(409);
     if (!findUser) return res.sendStatus(401); //Unauthorized
 
     // Evaluate Password
@@ -38,13 +34,10 @@ const handleLogin = async (req, res) => {
         ); 
 
         // Saving refreshToken with current user
-        const otherUser = usersDB.users.filter(person => person.email !== findUser.email);
-        const currentUser = {...findUser, refreshToken };
-        usersDB.setUsers([...otherUser, currentUser]);
-        await fsPromises.writeFile(
-            path.join(__dirname, '..', 'Models', 'users.json'),
-            JSON.stringify(usersDB.users)
-        );
+        findUser.refreshToken = refreshToken;
+        const result =  await findUser.save();
+        console.log(result);
+        
         res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000});
         res.json({ accessToken });
     }else {
