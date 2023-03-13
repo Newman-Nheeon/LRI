@@ -1,7 +1,7 @@
-/* to be edited */
 
-.login {
-  background: url("../../../assets/images/home_art.jpg") no-repeat;
+
+.register {
+  background: url("../../assets/images/home_art.jpg") no-repeat;
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -26,11 +26,8 @@
   &__container {
     height: 100%;
     display: flex;
-    display: -webkit-flex;
     align-items: center;
-    -webkit-align-items: center;
     justify-content: center;
-    -webkit-justify-content: center;
 
     @media screen and (max-width: 768.98px) {
       padding: 1rem 0 0;
@@ -40,7 +37,6 @@
       align-items: center;
       justify-content: center;
       display: flex;
-      flex-direction: column;
       flex-wrap: wrap;
       background-color: var(--clr-white);
       border-radius: 10px;
@@ -55,7 +51,6 @@
       width: 500px;
       &-header {
         margin-bottom: 20px;
-        text-align: center;
 
         h3 {
           font-size: 20px;
@@ -67,7 +62,6 @@
             color: #1e88e5;
           }
         }
-
       }
 
       &-form {
@@ -131,6 +125,13 @@
           }
         }
 
+        .custom-control {
+          min-height: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
         .btn {
           display: inline-block;
           color: #fff;
@@ -151,7 +152,6 @@
             border: none;
           }
         }
-
         .input-box--password {
           display: flex;
           align-items: center;
@@ -180,19 +180,6 @@
             font-weight: 400;
             border-bottom: 1px solid;
           }
-        }
-
-      }
-
-      .forget__password{
-        text-align: right;
-        a{
-          color: #3d3d3d;
-          display: inline-block;
-          font-size: 14px;
-          margin-bottom: 20px;
-          font-weight: 400;
-          border-bottom: 1px solid;
         }
       }
     }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.scss";
+import "../../../dist/main.css";
 import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
