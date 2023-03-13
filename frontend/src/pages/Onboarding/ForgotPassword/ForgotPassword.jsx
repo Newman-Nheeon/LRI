@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../dist/main.css";
 
 
 const ForgotPassword = () => {
