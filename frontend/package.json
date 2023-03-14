@@ -50,13 +50,4 @@
     "sass-loader": "^13.2.0",
     "webpack": "^5.76.1"
   }
-  "liveSassCompile.settings.formats": [
-    {
-        "format": "compressed",
-        "extensionName": ".css",
-        "savePath": "frontend/src/dist",
-        "savePathSegmentKeys": null,
-        "savePathReplaceSegmentsWith": null
-    }
-]
 }
