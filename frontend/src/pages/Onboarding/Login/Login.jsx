@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.scss";
+import "../../../dist/main.css";
 import { Link } from "react-router-dom";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
@@ -35,76 +35,70 @@ const Login = () => {
   });
 
   return (
-    <section className="login">
-      <article className="login__container container">
-        <div className="login__container-contents">
-          <div style={{ width: "100%" }}>
-            <Toaster
-              position="top-center"
-              reverseOrder={false}
-              toastOptions={{ duration: 2000 }}
+    <body className="login">
+      <section className="login__container">
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{ duration: 2000 }}
+        />
+        <h3 className="login__header">
+          <span>LRI</span> Login
+        </h3>
+        <p className="login__para">Access to our dashboard</p>
+        <form
+          className="form"
+          onSubmit={formik.handleSubmit}
+          autoComplete="off"
+        >
+          <label htmlFor="email">Email Address</label>
+          <input
+            {...formik.getFieldProps("email")}
+            type="text"
+            id="email"
+            className="form__input"
+          />
+          <label htmlFor="password">Password</label>
+          <div className="password">
+            <input
+              {...formik.getFieldProps("password")}
+              type={showPassword ? "password" : "text" }
+              id="password"
+              maxlength="20"
+              className="form__input"
             />
-            <div className="login__container-contents-header">
-              <h3>
-                <span>LRI</span> Login
-              </h3>
-              <p>Access to our dashboard</p>
-            </div>
-
-            <form
-              className="register__container-contents-form"
-              onSubmit={formik.handleSubmit}
-              autoComplete="off"
+            <span
+              className="password__visibility"
+              onClick={() => setShowPassword(!showPassword)}
             >
-              <div className="form__input-box">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  {...formik.getFieldProps("email")}
-                  type="text"
-                  id="email"
-                  className="form-control"
-                />
-              </div>
-
-              <div className="form__input-box">
-                <label htmlFor="password">Password</label>
-                <div className="input-box--password">
-                  <input
-                    {...formik.getFieldProps("password")}
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    className="form-control password-input"
-                  />
-                  <div
-                    className="password-visibility"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? <FaEye /> : <FaEyeSlash />}
-                  </div>
-                </div>
-              </div>
-
-              <div className="forget__password">
-                <Link className="forget__password-link" to="/forgotpassword">
-                  Forgot Password ?
-                </Link>
-              </div>
-
-              <button className="btn btn-primary" type="submit">
-                Login
-              </button>
-
-              <div className="form__footer">
-                Don’t have an account?{" "}
-                <Link className="form__footer-link " to="/register">
-                  Register
-                </Link>
-              </div>
-            </form>
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
           </div>
-        </div>
-      </article>
-    </section>
+          
+            
+          
+
+          <div className="forget__password">
+            <Link className="forget__password-link" to="/forgotpassword">
+              Forgot Password ?
+            </Link>
+          </div>
+
+          <button className="btn btn-primary" type="submit">
+            Login
+          </button>
+
+          <div className="form__footer">
+            Don’t have an account?{" "}
+            <Link className="form__footer-link " to="/register">
+              Register
+            </Link>
+          </div>
+        </form>
+      
+        
+      </section>
+    </body>
   );
 };
 

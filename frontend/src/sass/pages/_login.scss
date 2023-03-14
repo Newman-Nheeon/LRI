@@ -1,0 +1,131 @@
+
+.login {
+  background: url("../assets/images/home_art.jpg")no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  &__container {
+    border-radius: 10px;
+    padding: 30px;
+    width: 500px;
+    background-color: var(--clr-white);
+    border: 1px solid #eaedf2;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    // @media screen and (max-width: 768.98px) {
+    //   padding: 1rem 0 0;
+    // }
+  }
+  &__header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+    span {
+      color: #1e88e5;
+    }
+  }
+  &__para {
+    
+  }
+
+      &-form {
+        .form__group-row {
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -15px;
+          margin-left: -15px;
+          .form__group-col {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            @media screen and (min-width: 992px) {
+              flex: 0 0 50%;
+              max-width: 50%;
+            }
+          }
+        }
+
+        .form__input-box {
+          margin-bottom: 1rem;
+        }
+
+        .form-control {
+          display: block;
+          width: 100%;
+          height: calc(1.5em + 0.75rem + 2px);
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          color: #495057;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid #ced4da;
+          border-radius: 0.25rem;
+          transition: border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out;
+
+          &:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+          }
+        }
+
+        .password-input {
+          border: 1px solid transparent;
+          border-radius: 0.25rem;
+
+          &:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: transparent;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+          }
+        }
+
+        
+
+        
+
+        
+
+        .form__footer {
+          text-align: center;
+          margin-top: 1rem;
+          a {
+            color: #3d3d3d;
+            display: inline-block;
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            border-bottom: 1px solid;
+          }
+        }
+
+      }
+
+      .forget__password{
+        text-align: right;
+        a{
+          color: #3d3d3d;
+          display: inline-block;
+          font-size: 14px;
+          margin-bottom: 20px;
+          font-weight: 400;
+          border-bottom: 1px solid;
+        }
+      }
+    
+  }
+
