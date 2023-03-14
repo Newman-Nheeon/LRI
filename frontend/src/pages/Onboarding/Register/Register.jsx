@@ -42,130 +42,120 @@ const Register = () => {
   });
 
   return (
-    <section className="register">
-      <article className="register__container container">
-        <div className="register__container-contents">
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-            toastOptions={{ duration: 9000 }}
-          />
-          <div className="register__container-contents-header">
-            <h3>
-              <span>LRI</span> Registration
-            </h3>
-            <p>Access to our mentoring programme</p>
+    <body className="login">
+      <section className="login__container ">
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{ duration: 9000 }}
+        />
+        <h3 className="login__header">
+          <span>LRI</span> Registration
+        </h3>
+        <p className="login__para">Access to our mentoring programme</p>
+        <form
+          className="form"
+          onSubmit={formik.handleSubmit}
+          autoComplete="off"
+        >
+        <label htmlFor="firstName">First Name</label>
+        <input
+          {...formik.getFieldProps("firstName")}
+          type="text"
+          id="firstName"
+          className="form__input"
+        />    
+        <label htmlFor="lastName">Last Name</label>
+        <input
+          {...formik.getFieldProps("lastName")}
+          type="text"
+          id="lastName"
+          className="form__input"
+        />
+        <label htmlFor="email">Email Address</label>
+        <input
+          {...formik.getFieldProps("email")}
+          type="text"
+          id="email"
+          className="form__input"
+        />
+        <div className="grid grid__2">
+        <label htmlFor="password">Password</label>
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        </div>
+        <div className="grid grid__2">
+          <div className="password">
+                      <input
+                        {...formik.getFieldProps("password")}
+                        type={showPassword ? "password" : "text" }
+                        id="password"
+                        maxlength="20"
+                        className="form__input"
+                      />
+                      <span
+                        className="password__visibility"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <FaEye /> : <FaEyeSlash />}
+                      </span>
+          </div>
+          <div className="password">
+              <input
+                {...formik.getFieldProps("confirmPassword")}
+                type={showPassword ? "password" : "text" }
+                id="confirmPassword"
+                maxlength="20"
+                className="form__input"
+              />
+              <span
+                className="password__visibility"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+          </div>
+        </div>      
+        
+
+            
+                
+            
+
+          
+
+          <div className="form__input-box">
+            <div className="custom-control custom-control-xs custom-checkbox">
+              <input
+                {...formik.getFieldProps("checkbox")}
+                type="checkbox"
+                id="acceptedTos"
+                name="checkbox"
+                checked={formik.values.checkbox}
+                className="custom-control-input"
+              />
+              <label
+                className="custom-control-label"
+                htmlFor="agree_checkbox_user"
+              >
+                I agree to privacy policy & Terms
+              </label>
+            </div>
           </div>
 
-          <form
-            className="register__container-contents-form"
-            onSubmit={formik.handleSubmit}
-            autoComplete="off"
-          >
-            <div className="form__group-row">
-              <div className="form__group-col">
-                <div className="form__input-box">
-                  <label htmlFor="firstName">First Name</label>
+          <button className="btn btn-primary" type="submit">
+            Create Account
+          </button>
 
-                  <input
-                    {...formik.getFieldProps("firstName")}
-                    type="text"
-                    id="firstName"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-              <div className="form__group-col">
-                <div className="form__input-box">
-                  <label htmlFor="lastName">Last Name</label>
-
-                  <input
-                    {...formik.getFieldProps("lastName")}
-                    type="text"
-                    id="lastName"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="form__input-box">
-              <label htmlFor="email">Email Address</label>
-              <input
-                {...formik.getFieldProps("email")}
-                type="text"
-                id="email"
-                className="form-control"
-              />
-            </div>
-
-            <div className="form__group-row">
-              <div className="form__group-col">
-                <div className="form__input-box">
-                  <label htmlFor="password">Password</label>
-                  <div className="input-box--password">
-                    <input
-                      {...formik.getFieldProps("password")}
-                      type={showPassword ? "text" : "password"}
-                      id="password"
-                      className="form-control password-input"
-                    />
-                    <div
-                      className="password-visibility"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? <FaEye /> : <FaEyeSlash />}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="form__group-col">
-                <div className="form__input-box">
-                  <label htmlFor="confirmPassword">Confirm Password</label>
-                  <input
-                    {...formik.getFieldProps("confirmPassword")}
-                    type={showPassword ? "text" : "password"}
-                    id="confirmPassword"
-                    className="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="form__input-box">
-              <div className="custom-control custom-control-xs custom-checkbox">
-                <input
-                  {...formik.getFieldProps("checkbox")}
-                  type="checkbox"
-                  id="acceptedTos"
-                  name="checkbox"
-                  checked={formik.values.checkbox}
-                  className="custom-control-input"
-                />
-                <label
-                  className="custom-control-label"
-                  htmlFor="agree_checkbox_user"
-                >
-                  I agree to privacy policy & Terms
-                </label>
-              </div>
-            </div>
-
-            <button className="btn btn-primary" type="submit">
-              Create Account
-            </button>
-
-            <div className="form__footer">
-              Already have an account?{" "}
-              <Link className="form__footer-link " to="/">
-                Login
-              </Link>
-            </div>
-          </form>
-        </div>
-      </article>
-    </section>
+          <div className="form__footer">
+            Already have an account?{" "}
+            <Link className="form__footer-link " to="/">
+              Login
+            </Link>
+          </div>
+        </form>
+        
+      </section>
+    </body>
   );
 };
 

@@ -1,0 +1,6 @@
+.grid {
+  display: grid;
+  &__2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
