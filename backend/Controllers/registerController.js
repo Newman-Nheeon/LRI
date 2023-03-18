@@ -30,4 +30,3 @@ const RegisterNewUsers = async (req, res) => {
 }
 
 module.exports = { RegisterNewUsers };
-

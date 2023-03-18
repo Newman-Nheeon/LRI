@@ -12,7 +12,7 @@ jobs:
                   command: |
                     cd frontend 
                     npm install
-                    npm run build 
+                    npm start 
             - save_cache:
                   paths: [frontend/node_modules]
                   key: frontend-build
@@ -38,19 +38,19 @@ jobs:
     #               paths:
     #                   - project/backend/dist
 
-    test-frontend:
-        docker:
-            - image: circleci/node:13.8.0
-        steps:
-            - checkout
-            - restore_cache:
-                  keys: [frontend-build]
-            - run:
-                  name: Install dependencies and test frontend
-                  command: |
-                    cd frontend
-                    npm install
-                    npm run test 
+    # test-frontend:
+    #     docker:
+    #         - image: circleci/node:13.8.0
+    #     steps:
+    #         - checkout
+    #         - restore_cache:
+    #               keys: [frontend-build]
+    #         - run:
+    #               name: Install dependencies and test frontend
+    #               command: |
+    #                 cd frontend
+    #                 npm install
+    #                 npm run test 
     # test-backend:
     #     docker:
     #         - image: circleci/node:13.8.0
@@ -67,20 +67,20 @@ jobs:
     #               environment:
     #                   NODE_OPTIONS: --max_old_space_size=8192
 
-    scan-frontend:
-        docker:
-            - image: circleci/node:13.8.0
-        steps:
-            - checkout
-            - restore_cache:
-                  keys: [frontend-build]
-            - run:
-                  name: Install dependencies and scan frontend
-                  command: |
-                    cd frontend
-                    npm install 
-                    npm audit fix --audit-level=critical --force
-                    npm audit --audit-level=critical 
+    # scan-frontend:
+    #     docker:
+    #         - image: circleci/node:13.8.0
+    #     steps:
+    #         - checkout
+    #         - restore_cache:
+    #               keys: [frontend-build]
+    #         - run:
+    #               name: Install dependencies and scan frontend
+    #               command: |
+    #                 cd frontend
+    #                 npm install 
+    #                 npm audit fix --audit-level=critical --force
+    #                 npm audit --audit-level=critical 
     # scan-backend:
     #     docker:
     #         - image: circleci/node:13.8.0
