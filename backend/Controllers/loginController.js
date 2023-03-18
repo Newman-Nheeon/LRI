@@ -8,7 +8,7 @@ const handleLogin = async (req, res) => {
     if (!firstName || !lastName || !email || !password) return res.status(400).json({'message': 'Fields are required!!'});
 
     const findUser =  await User.findOne({ email: email }).exec();
-    if (duplicate) return res.sendStatus(409);
+    // if (duplicate) return res.sendStatus(409);
     if (!findUser) return res.sendStatus(401); //Unauthorized
 
     // Evaluate Password
