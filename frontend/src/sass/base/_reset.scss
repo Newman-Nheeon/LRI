@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as a;
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* headings whould be Capitalise */ 
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+}
+
+/*  default body style */
+body {
+  // font-family: a.$ff-main;
+  font-style: normal;
+  font-weight: 500;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  overflow: hidden;
+  // color: a.$color-sub;
+  // background: a.$color-bg;
+  height: 100vh;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+
+
+
+
